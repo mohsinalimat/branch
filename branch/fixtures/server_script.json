@@ -1,0 +1,17 @@
+[
+ {
+  "allow_guest": 0,
+  "api_method": "get_ref",
+  "disabled": 1,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Save",
+  "event_frequency": "All",
+  "modified": "2022-03-02 15:15:02.138604",
+  "module": "Branch",
+  "name": "Sales Invoice",
+  "reference_doctype": "Sales Invoice",
+  "script": "for d in self.get('items'):\n    # d.description =  frappe.db.get_value(\"Item\",{'name':d.item_code},'item_group')\n    d.description =  frappe.db.get_value(\"Item Customer Info\",{'customer':self.customer,'parent':d.item_code},'customer_ref_code')",
+  "script_type": "DocType Event"
+ }
+]
